@@ -1,0 +1,33 @@
+.navbar-app {
+  background-color: black;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+
+  &__icon {
+    align-items: center;
+    color: white;
+    cursor: default;
+    display: flex;
+    margin: 0;
+  }
+
+  &__navigation {
+    display: flex;
+  }
+
+  &__navigation-item {
+    align-items: center;
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 0 10px 0 10px;
+
+    &:hover {
+      background-color: lightgray;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}

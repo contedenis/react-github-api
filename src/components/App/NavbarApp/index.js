@@ -2,12 +2,23 @@ import React from 'react';
 
 import './styles.scss';
 
-function NavbarApp() {
+function NavBarApp() {
+  const navigation = [
+    'Home',
+    'Trending repositories',
+    'Search by language',
+    'Search users',
+  ];
   return (
-    <div className="navbar">
-      Navbar
+    <div className="navbar-app">
+      <div className="navbar-app__icon">
+        <h3>Git Hub API</h3>
+      </div>
+      <div className="navbar-app__navigation">
+        {navigation.map(nav => <div className="navbar-app__navigation-item">{nav}</div>)}
+      </div>
     </div>
   );
 }
 
-export default NavbarApp;
+export default NavBarApp;
