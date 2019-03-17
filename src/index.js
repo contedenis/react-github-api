@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+
 import './index.css';
-import App from './App';
+import routes from './routes';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const MOUNT_NODE = document.getElementById('root'); // eslint-disable-line no-undef
+ReactDOM.render(
+  (
+    <Router history={browserHistory} routes={routes} />
+  ),
+  MOUNT_NODE,
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
