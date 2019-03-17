@@ -15,7 +15,7 @@ function NavBarApp() {
         <h3>Git Hub API</h3>
       </div>
       <div className="navbar-app__navigation">
-        {navigation.map(nav => <div className="navbar-app__navigation-item">{nav}</div>)}
+        {navigation.map((nav, key) => <div className="navbar-app__navigation-item" key={key}>{nav}</div>)}
       </div>
     </div>
   );
