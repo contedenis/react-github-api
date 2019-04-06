@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form'; // eslint-disable-line
+import home from '../components/Home/reducer';
 
 const appReducer = combineReducers({
-
+  home,
 });
 
 const rootReducer = (state, action) => appReducer(state, action);
