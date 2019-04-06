@@ -1,0 +1,1 @@
+export default { name: 'search-by-language', route: 'search-by-language' };

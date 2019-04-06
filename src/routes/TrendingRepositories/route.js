@@ -1,0 +1,1 @@
+export default { name: 'trending-repositories', route: 'trending-repositories' };
