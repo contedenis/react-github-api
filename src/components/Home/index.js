@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import exploringGitHub from '../../assets/images/exploringGitHub.png';
 import git from '../../assets/images/git.png';
 import byLanguages from '../../assets/images/byLanguages.png';
 import userGit from '../../assets/images/userGit.png';
+
+import * as actions from './actions';
 import './styles.scss';
 
-function Home() {
+function Home({ getRepository }) {
+  useEffect(() => {
+    getRepository({ repoName: 'facebook', repo: 'react' });
+    getRepository({ repoName: 'reduxjs', repo: 'redux' });
+    getRepository({ repoName: 'redux-saga', repo: 'redux-saga' });
+  });
+
   return (
     <div className="dashboard">
       <div className="dashboard__container">
@@ -39,4 +49,8 @@ function Home() {
   );
 }
 
-export default Home;
+Home.propTypes = {
+  getRepository: PropTypes.func.isRequired,
+};
+
+export default connect(null, actions)(Home);

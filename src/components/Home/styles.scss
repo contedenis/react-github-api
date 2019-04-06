@@ -50,7 +50,7 @@
   &__container-link {
     display: flex;
     justify-content: center;
-    width: fit-content;
+    width: 100%;
   }
 
   &__card-link {
@@ -84,11 +84,13 @@
       flex-direction: column;
       width: 100%;
     }
+
     &__card {
       height: 50%;
       margin: 0;
       width: 100%;
     }
+
     &__card-text {
       margin: 0;
 
@@ -100,6 +102,11 @@
         font-size: 12px;
       }
     }
+
+    &__container-link {
+      width: fit-content;
+    }
+  
     &__card-link {
       margin: 10px;
       padding: 10px;
@@ -107,6 +114,7 @@
         font-size: 12px;
       }
     }
+
     &__card-image {
       height: 150px;
       margin-bottom: 10px;
