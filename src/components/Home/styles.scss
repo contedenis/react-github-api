@@ -8,21 +8,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px 0 20px 0;
-    width: 100%;
+    padding: 20px;
   }
 
   &__container-promo {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
   }
 
   &__card {
     border-radius: 3px;
     height: 50%;
-    margin: 20px;
     width: 45%;
   }
 
@@ -50,32 +47,8 @@
   &__container-link {
     display: flex;
     justify-content: center;
+    margin: 20px 0;
     width: 100%;
-  }
-
-  &__card-link {
-    align-items: center;
-    background-color: white;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    height: 40%;
-    justify-content: center;
-    margin: 20px;
-    padding: 20px;
-    width: 30%;
-
-    & > code {
-      background-color: #f9f2f4;
-      border-radius: 4px;
-      font-family: sans-serif;
-    }
-  }
-
-  &__card-image {
-    height: 200px;
-    margin-bottom: 10px;
-    width: 200px;
   }
 
   @media only screen and (max-width: 768px) {
@@ -104,21 +77,10 @@
     }
 
     &__container-link {
-      width: fit-content;
-    }
-  
-    &__card-link {
-      margin: 10px;
-      padding: 10px;
-      & > code {
-        font-size: 12px;
-      }
-    }
-
-    &__card-image {
-      height: 150px;
-      margin-bottom: 10px;
-      width: 150px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 50px 0;
+      width: 100%;
     }
   }
 }

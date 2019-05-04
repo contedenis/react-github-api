@@ -1,0 +1,38 @@
+.card-link {
+  align-items: center;
+  background-color: white;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+
+  &__image {
+    height: 200px;
+    margin-bottom: 10px;
+    width: auto;
+  }
+
+  & > code {
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin: 10px;
+    padding: 10px;
+
+    &__image {
+      height: 150px;
+      margin-bottom: 10px;
+      width: auto;
+    }
+
+    & > code, a {
+      font-size: 12px;
+    }
+  }
+}

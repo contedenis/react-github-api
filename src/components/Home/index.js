@@ -3,19 +3,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import exploringGitHub from '../../assets/images/exploringGitHub.png';
-import git from '../../assets/images/git.png';
-import byLanguages from '../../assets/images/byLanguages.png';
-import userGit from '../../assets/images/userGit.png';
+import reactLogo from '../../assets/images/react-logo.png';
+import reactReduxLogo from '../../assets/images/redux-logo.png';
+import reduxSagaLogo from '../../assets/images/redux-saga-logo.png';
 
-import * as actions from './actions';
 import './styles.scss';
+import { selectReact, selectRedux, selectReduxSaga } from './selectors';
+import * as actions from './actions';
+import CardLink from './CardLink';
 
-function Home({ getRepository }) {
-  useEffect(() => {
+function Home({
+  getRepository,
+  react,
+  redux,
+  reduxSaga,
+}) {
+  function handleMount() {
     getRepository({ repoName: 'facebook', repo: 'react' });
     getRepository({ repoName: 'reduxjs', repo: 'redux' });
     getRepository({ repoName: 'redux-saga', repo: 'redux-saga' });
-  });
+  }
+
+  useEffect(handleMount, []);
 
   return (
     <div className="dashboard">
@@ -31,18 +40,9 @@ function Home({ getRepository }) {
           </div>
         </div>
         <div className="dashboard__container-link">
-          <div className="dashboard__card-link">
-            <img className="dashboard__card-image" src={git} alt="git" />
-            <code>Trending repositories</code>
-          </div>
-          <div className="dashboard__card-link">
-            <img className="dashboard__card-image" src={byLanguages} alt="git" />
-            <code>Repositories by languages</code>
-          </div>
-          <div className="dashboard__card-link">
-            <img className="dashboard__card-image" src={userGit} alt="git" />
-            <code>Search users</code>
-          </div>
+          {react && <CardLink repo={react} image={reactLogo} />}
+          {redux && <CardLink repo={redux} image={reactReduxLogo} />}
+          {reduxSaga && <CardLink repo={reduxSaga} image={reduxSagaLogo} />}
         </div>
       </div>
     </div>
@@ -51,6 +51,15 @@ function Home({ getRepository }) {
 
 Home.propTypes = {
   getRepository: PropTypes.func.isRequired,
+  react: PropTypes.object.isRequired,
+  redux: PropTypes.object.isRequired,
+  reduxSaga: PropTypes.object.isRequired,
 };
 
-export default connect(null, actions)(Home);
+const mapStateToProps = state => ({
+  react: selectReact(state),
+  redux: selectRedux(state),
+  reduxSaga: selectReduxSaga(state),
+});
+
+export default connect(mapStateToProps, actions)(Home);
