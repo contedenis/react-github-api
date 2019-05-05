@@ -1,0 +1,27 @@
+.repo-item {
+  background-color: white;
+  margin: 10px;
+
+  &__image {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    border-right: 1px solid #DEC3BD;
+    height: 250px;
+    padding: 5px;
+    width: 250px;
+  }
+
+  &__container {
+    border-radius: 3px;
+    border: 1px solid #DEC3BD;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+}
