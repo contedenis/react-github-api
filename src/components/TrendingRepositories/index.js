@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Spinner from '../Spinner';
+import trendingRepositoriesImg from '../../assets/images/trendingRepositories.jpg';
+
 import './styles.scss';
 import { params } from './constants';
-import { selectTrendingRepositories } from './selectors';
+import { selectTrendingRepositories, selectFetching } from './selectors';
 import * as actions from './actions';
 import RepoItem from './RepoItem';
 
-import trendingRepositoriesImg from '../../assets/images/trendingRepositories.jpg';
-
-function TrendingRepositories({ getTrendingRepositories, trendingRepositories }) {
+function TrendingRepositories({ fetching, getTrendingRepositories, trendingRepositories }) {
   function handleMount() {
     getTrendingRepositories({ params });
   }
@@ -20,9 +21,14 @@ function TrendingRepositories({ getTrendingRepositories, trendingRepositories })
   return (
     <div className="trending-repositories">
       <img className="trending-repositories__image" src={trendingRepositoriesImg} alt="trending repositories" />
-      {trendingRepositories && trendingRepositories.map((repo, key) => (
-        <RepoItem repo={repo} key={key} />
-      ))}
+      {fetching
+        ? (
+          <Spinner className="trending-repositories__spinner" />
+        ) : (
+          trendingRepositories && trendingRepositories.map((repo, key) => (
+            <RepoItem repo={repo} key={key} />
+          ))
+        )}
     </div>
   );
 }
@@ -32,11 +38,13 @@ TrendingRepositories.defaultProps = {
 };
 
 TrendingRepositories.propTypes = {
+  fetching: PropTypes.bool.isRequired,
   getTrendingRepositories: PropTypes.func.isRequired,
   trendingRepositories: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
+  fetching: selectFetching(state),
   trendingRepositories: selectTrendingRepositories(state),
 });
 

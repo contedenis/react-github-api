@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -6,13 +6,20 @@ import exploringGitHub from '../../assets/images/exploringGitHub.png';
 import reactLogo from '../../assets/images/react-logo.png';
 import reactReduxLogo from '../../assets/images/redux-logo.png';
 import reduxSagaLogo from '../../assets/images/redux-saga-logo.png';
+import Spinner from '../Spinner';
 
 import './styles.scss';
-import { selectReact, selectRedux, selectReduxSaga } from './selectors';
+import {
+  selectFetching,
+  selectReact,
+  selectRedux,
+  selectReduxSaga,
+} from './selectors';
 import * as actions from './actions';
 import CardLink from './CardLink';
 
 function Home({
+  fetching,
   getRepository,
   react,
   redux,
@@ -40,9 +47,16 @@ function Home({
           </div>
         </div>
         <div className="dashboard__container-link">
-          {react && <CardLink repo={react} image={reactLogo} />}
-          {redux && <CardLink repo={redux} image={reactReduxLogo} />}
-          {reduxSaga && <CardLink repo={reduxSaga} image={reduxSagaLogo} />}
+          {fetching
+            ? (
+              <Spinner className="dashboard__container-spinner" />
+            ) : (
+              <Fragment>
+                {react && <CardLink repo={react} image={reactLogo} />}
+                {redux && <CardLink repo={redux} image={reactReduxLogo} />}
+                {reduxSaga && <CardLink repo={reduxSaga} image={reduxSagaLogo} />}
+              </Fragment>
+            )}
         </div>
       </div>
     </div>
@@ -50,6 +64,7 @@ function Home({
 }
 
 Home.propTypes = {
+  fetching: PropTypes.bool.isRequired,
   getRepository: PropTypes.func.isRequired,
   react: PropTypes.object.isRequired,
   redux: PropTypes.object.isRequired,
@@ -57,6 +72,7 @@ Home.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  fetching: selectFetching(state),
   react: selectReact(state),
   redux: selectRedux(state),
   reduxSaga: selectReduxSaga(state),

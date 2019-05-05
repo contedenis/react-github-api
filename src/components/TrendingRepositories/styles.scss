@@ -1,7 +1,15 @@
 .trending-repositories {
   background-color: #eee;
+  min-height: 100vh;
   position: relative;
   width: 100%;
+
+  &__spinner {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+  }
 
   &__image {
     width: 100%;
