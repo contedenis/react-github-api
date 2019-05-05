@@ -5,12 +5,16 @@ import Body from './Body';
 import Navbar from './NavbarApp';
 import Footer from './FooterApp';
 
+import Main from '../Main';
+
 function App({ children }) {
   return (
     <div className="App">
       <Body>
         <Navbar />
-        {children}
+        <Main>
+          {children}
+        </Main>
         <Footer />
       </Body>
     </div>
