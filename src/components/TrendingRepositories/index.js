@@ -9,7 +9,7 @@ import './styles.scss';
 import { params } from './constants';
 import { selectTrendingRepositories, selectFetching } from './selectors';
 import * as actions from './actions';
-import RepoItem from './RepoItem';
+import RepoItem from '../RepoItem';
 
 function TrendingRepositories({ fetching, getTrendingRepositories, trendingRepositories }) {
   function handleMount() {

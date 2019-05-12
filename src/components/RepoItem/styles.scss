@@ -57,6 +57,9 @@
     font-size: 14px;
     font-weight: normal;
     margin: 0;
+    max-height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__description-info-container {
