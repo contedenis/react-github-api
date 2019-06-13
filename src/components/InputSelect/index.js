@@ -13,12 +13,12 @@ function InputSelect({
 }) {
   return (
     <select
-      type="select"
       className={cn('select-repositories', className)}
-      value={value}
       onChange={e => onChange(e.target.value)}
+      type="select"
+      value={value || ''}
     >
-      <option disabled selected value="">{placeholder}</option>
+      <option hidden>{placeholder}</option>
       {options.length > 0 && options.map((option, key) => (
         <option key={key} value={option.value}>{option.displayValue}</option>
       ))

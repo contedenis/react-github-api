@@ -63,12 +63,19 @@ function Home({
   );
 }
 
+Home.defaultProps = {
+  fetching: false,
+  react: {},
+  redux: {},
+  reduxSaga: {},
+};
+
 Home.propTypes = {
-  fetching: PropTypes.bool.isRequired,
+  fetching: PropTypes.bool,
   getRepository: PropTypes.func.isRequired,
-  react: PropTypes.object.isRequired,
-  redux: PropTypes.object.isRequired,
-  reduxSaga: PropTypes.object.isRequired,
+  react: PropTypes.object,
+  redux: PropTypes.object,
+  reduxSaga: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
