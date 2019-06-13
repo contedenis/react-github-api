@@ -29,6 +29,7 @@ function SearchByLanguage({ fetching, getRepositoriesByLanguage, repositories })
       <img className="repositories-by-language__image" src={repositoriesByLanguage} alt="repositories by language" />
       <div className="repositories-by-language__select">
         <InputSelect
+          className="repositories-by-language__select-input"
           onChange={setRepoName}
           options={inputOptions}
           placeholder="Select a language"
